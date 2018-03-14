@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apacheds
+  labels:
+    name: apacheds
+spec:
+  type: ClusterIP
+  ports:
+  - port: 10389
+    targetPort: apacheds
+  selector:
+    app: apacheds
