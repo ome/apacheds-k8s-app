@@ -5,9 +5,10 @@ metadata:
   labels:
     name: apacheds
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
-  - port: 10389
-    targetPort: apacheds
+    - protocol: TCP
+      port: 10389
+      nodePort: 30389
   selector:
     app: apacheds
