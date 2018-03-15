@@ -11,13 +11,18 @@ spec:
     spec:
       containers:
       - name: apacheds
-        image: "openmicroscopy/apacheds:0.5.0"
+        image: "joshmoore/apacheds-docker:restart"
         envFrom:
         - secretRef:
             name: apacheds-config-private
         ports:
         - name: apacheds
           containerPort: 10389
+        volumeMounts:
+        - name: apacheds-files
+          mountPath: /var/lib/apacheds
+          subPath: files
+
       volumes:
       - name: apacheds-files
         persistentVolumeClaim:
